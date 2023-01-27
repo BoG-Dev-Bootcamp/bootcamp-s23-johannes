@@ -1,1 +1,2 @@
-Hello, my name is Johannes
+I am using sudo nano to edit my text in terminal
+then I write out and commit using terminal

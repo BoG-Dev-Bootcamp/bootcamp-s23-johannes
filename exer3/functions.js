@@ -6,7 +6,9 @@
     Example: [1, 2, 3] -> [3, 2, 1]
 */
 function reverseArr(arr) {
-
+    const newArr = [];
+    arr.forEach((element,index) => newArr[arr.length - index - 1] = element);
+    return (newArr);
 }
 
 /*
@@ -25,6 +27,11 @@ function reverseArr(arr) {
     ["name", "age", "breed", "friendly"]
 */
 function objectKeysToArr(object) {
+    const newArr = [];
+    for(const key in object) {
+        newArr.push(key)
+    }
+    return newArr
 
 }
 
@@ -52,7 +59,8 @@ function objectKeysToArr(object) {
     }
 */
 function combineObjects(object1, object2) {
-
+    const newObj = {...object1, ...object2}
+    return newObj
 }
 
 
@@ -63,4 +71,4 @@ console.log(reverseArr([2, 4, 6, 8]))
 console.log(objectKeysToArr({ name: "Casey", age: 18, breed: "Pomeranian", friendly: false }))
 console.log(objectKeysToArr({ 0: "Casey", 1: 18, 2: "Pomeranian", "test 1": false }))
 console.log(combineObjects({ name: "Casey", age: 18 }, { breed: "Pomeranian", friendly: false }))
-console.log(objectKeysToArr({ 0: "Casey", 1: 18, 2: "Pomeranian" }, { "test 1": false }))
+console.log(combineObjects({ 0: "Casey", 1: 18, 2: "Pomeranian" }, { "test 1": false }))

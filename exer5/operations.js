@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import Dog from "./models/dog.js"
 
 /** 
 Get a dog from the db based on a specific attribute
@@ -10,7 +11,9 @@ Get a dog from the db based on a specific attribute
 
 */
 const readDog = async (identifier) => {
-
+    
+    const dog = await Dog.findOne(identifier)
+    return dog
 }
 
 /** 
@@ -22,7 +25,9 @@ Get all dogs from the db
 
 */
 const readDogs = async () => {
-
+    const dogs = []
+    const x = (await Dog.find()).forEach(function(d) {dogs.push(d)})
+    return dogs
 }
 
 /** 
@@ -35,7 +40,15 @@ Create a new dog and save it to the db
 
 */
 const createDog = async (newDogData) => {
+    try {
+        const newDog = await Dog.create(newDogData)
+    } catch (error) {
+        return false;
+    }
 
+    return true;
+    
+    
 }
 
 /** 
@@ -51,6 +64,14 @@ Dog object should remain but the specificed attributes should be changed.
 
 */
 const updateDog = async (identifier, newDogData) => {
+    try {
+        const dog = await Dog.findOneAndUpdate(identifier, newDogData)
+    } catch(error) {
+        return false;
+    }
+    return true;
+    
+    
 
 }
 /** 
@@ -63,6 +84,12 @@ Remove a dog from the db based on a specific attribute
 
 */
 const deleteDog = async (identifier) => {
+    try {
+        const dog = await Dog.findOneAndDelete(identifier)
+    } catch(error) {
+        return false;
+    }
+    return true;
 
 }
 

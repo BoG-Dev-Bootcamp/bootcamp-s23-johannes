@@ -5,6 +5,8 @@ await connectDB() // function that creates a connection to your db
 
 // tests - feel free to change these or add more
 const test1 = await createDog({ name: "Casey", age: 10, breed: "Pomeranian", dateEnter: Date.now() })
+const test11 = await createDog({ name: "Johannes", age: 10, breed: "Pomeranian", dateEnter: Date.now() })
+const test12 = await createDog({ name: "Archer", age: 10, breed: "Doberman", dateEnter: Date.now() })
 const test2 = await readDog({ name: "Casey" })
 const test3 = await readDogs()
 const test4 = await updateDog({ name: "Casey"}, {age: 11})
@@ -12,6 +14,8 @@ const test5 = await deleteDog({ name: "Casey" })
 
 
 console.log(test1)
+console.log(test11)
+console.log(test12)
 console.log(test2)
 console.log(test3)
 console.log(test4)
